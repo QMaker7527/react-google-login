@@ -1,6 +1,8 @@
 import './App.css';
 import GoogleLogin from 'react-google-login'
+// import GooglePayButton from '@google-pay/button-react';
 import { useState } from 'react';
+import Payment from './components/payment/Payment';
 
 function App() {
   const [loginData, setLoginData] = useState(
@@ -14,7 +16,7 @@ function App() {
   };
 
   const handleLogin = async (googleData) => {
-    const res = await fetch('/api/google-login',{
+    const res = await fetch('/api/google-login', {
       method: 'POST',
       body: JSON.stringify({
         token: googleData.tokenId,
@@ -33,7 +35,7 @@ function App() {
     localStorage.removeItem('loginData')
     setLoginData(null)
   }
-  
+
   return (
     <div className="App">
       <header className="App-header">
@@ -42,6 +44,7 @@ function App() {
           {loginData ? (
             <div>
               <h3>You logged in as {loginData.email}</h3>
+              <Payment />
               <button onClick={handleLogout}>Logout</button>
             </div>
           ) : (
