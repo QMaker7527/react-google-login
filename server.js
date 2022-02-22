@@ -30,9 +30,9 @@ app.post('/api/google-login', async (req, res) => {
 })
 
 app.use(express.static(path.join(__dirname, '/build')))
-app.get('*', (req, res) => {
+app.get('*', (req, res) => 
     res.sendFile(path.join(__dirname, '/build/index.html'))
-})
+)
 
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Server is ready at http://localhost:${process.env.PORT || 5000}`)

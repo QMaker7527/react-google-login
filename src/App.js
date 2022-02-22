@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import GoogleLogin from 'react-google-login'
 import { useState } from 'react';
@@ -11,8 +10,8 @@ function App() {
   )
 
   const handleFailure = (result) => {
-    alert(result)
-  }
+    alert(result);
+  };
 
   const handleLogin = async (googleData) => {
     const res = await fetch('/api/google-login',{
@@ -34,6 +33,7 @@ function App() {
     localStorage.removeItem('loginData')
     setLoginData(null)
   }
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -51,8 +51,7 @@ function App() {
               onSuccess={handleLogin}
               onFailure={handleFailure}
               cookiePolicy={'single_host_origin'}
-            >
-            </GoogleLogin>
+            ></GoogleLogin>
           )}
         </div>
       </header>
